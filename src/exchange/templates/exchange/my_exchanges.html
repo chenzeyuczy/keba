@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block import %}
+{% load staticfiles %}
+<link type="text/css" rel="stylesheet" href="{% static 'exchange/css/my_exchanges.css' %}">
+{% endblock import %}
+
+{% block main %}
+<div class="panel panel-primary grade-panel">
+    <div class="panel-heading">
+        <span><span class="fui-document"></span> 我的换课信息
+            <a class="btn btn-primary" href="{% url 'exchange:new_exchange' %}">发布换课信息</a>
+        </span>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>用于交换的课程</th>
+                    <th>希望得到的课程</th>
+                    <th>交换状态</th>
+                    <th>发布时间</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for exchange in exchanges %}
+                <tr>
+                    <td><a href="{% url 'exchange:exchange_detail' exchange.id %}">{{ exchange.lessonOut.title }}</a></td>
+                    <td>{{ exchange.lessonIn.title|default:'我只是想送一门课' }}</td>
+                    <td>{{ exchange.get_state_display }}</td>
+                    <td>{{ exchange.time }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+<div>
+{% endblock main %}
