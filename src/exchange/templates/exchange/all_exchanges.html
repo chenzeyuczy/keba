@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block import %}
+{% load staticfiles %}
+<link href="{% static 'exchange/css/all_exchanges.css' %}" rel="stylesheet" type="text/css">
+{% endblock import %}
+
+{% block main %}
+<div class="container">
+    <h2>浏览换课信息
+        <a id="create" href="{% url 'exchange:new_exchange' %}" class="btn btn-success">发布换课信息</a>
+    </h2>
+
+    <div><!-- Exchange info list -->
+        {% if exchanges %}
+        {% for exchange in exchanges %}
+            <a href="{% url 'exchange:exchange_detail' exchange.id %}">
+                <div class="panel panel-primary">
+                    <div class="panel-heading ">
+                        <div class="h6 text-left">计划换出课程：{{ exchange.lessonOut }}
+                            {% if exchange.lessonIn %}<br>希望得到的课程：{{ exchange.lessonIn }}{%endif%}</div>
+                        <div class="text-right">{{ exchange.time|date:'Y-m-d' }} {{ exchange.time|date:'H:i' }}</div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="text-left">Phone:{{ exchange.phone }}<br>Email:{{ exchange.email }}</div>
+                        <div class="text-right">{{ exchange.description }}</div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        {% else %}
+        <p>还没人发布换课信息哦</p>
+        {% endif %}
+   </div>
+    <!-- /.container -->
+
+    <div class="container">
+        <div class="pagination pagination-success">
+            <ul>
+                {% if exchanges.has_previous %}
+                <li class="previous"><a href="?page={{ exchanges.previous_page_number }}" class="fui-arrow-left">前页</a></li>
+                {% endif %}
+                {% for page in pages %}
+                <li {% if page == exchanges.number %}class="active"{% endif %}><a href="?page={{ page }}">{{ page }}</a></li>
+                {% endfor %}
+                {% if exchanges.has_next %}
+                <li class="next"><a href="?page={{ exchanges.next_page_number }}" class="fui-arrow-right">后页</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock main %}
