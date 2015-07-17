@@ -16,7 +16,7 @@
 
 3、通过pip安装Django(Version1.8.1)，MySQL-python(Version1.2.3)
 
-4、在MySQL命令行创建数据库 ```create database keba default character set utf8 collate utf8_bin;```
+4、在MySQL命令行创建数据库 ```create database sysu_lesson default character set utf8 collate utf8_bin;```
 
 5、在src/Sysulesson/setting.py 文件中修改数据库信息（包括数据库名称以及密码）；
 

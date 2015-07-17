@@ -6,8 +6,6 @@
 src/media/**/*.jpg
 src/media/**/*.png
 
-settings.py
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
