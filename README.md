@@ -22,7 +22,7 @@
 
 6、在src目录下执命令 ```python manage.py makemigrations``` ```python manage.py migrate```
 
-7、在Mysql中执行 ```use keba;```   ```source xxx.mysql```导入数据；
+7、在Mysql中执行 ```use sysu_lesson;```   ```source xxx.mysql```导入数据；
 
 8、启动```python manage.py runserver 0.0.0.0:8888``` （端口可自行设置)
 
