@@ -3,8 +3,8 @@
 *.swp
 
 # Media file
-Code/media/**/*.jpg
-Code/media/**/*.png
+src/media/**/*.jpg
+src/media/**/*.png
 
 settings.py
 
