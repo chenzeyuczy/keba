@@ -47,7 +47,7 @@ def lesson_detail(request, lesson_id):
     except Lesson.DoesNotExist:
         raise Http404('Lesson does not exist...')
     user = request.user
-    comments = Comment.objects.filter(lesson=lesson).order_by('time')
+    comments = Comment.objects.filter(user=user).filter(lesson=lesson)
     meterials = Meterial.objects.filter(lesson=lesson)
     return render(request, 'lesson/lesson_detail.html', {
         'lesson': lesson,
