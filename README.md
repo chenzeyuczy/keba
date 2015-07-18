@@ -1,6 +1,12 @@
 #课霸
 
-选最水的课！
+校园专属课程交流与换课多功能平台
+
+##Dependency
+
+-   [Git](https://git-scm.com/)
+-	[Django](https://www.djangoproject.com/)
+-	[Mysql](https://www.mysql.com/)
 
 ##Setup
 
@@ -21,3 +27,27 @@
 8、启动```python manage.py runserver 0.0.0.0:8888``` （端口可自行设置)
 
 9、用教务系统账号登陆； =。=
+
+***
+
+若正确运行，将显示如下信息：
+> Performing system checks...
+> 
+> System check identified no issues (0 silenced).
+> July 18, 2015 - 10:24:26
+> Django version 1.8.2, using settings 'SysuLesson.settings'
+> Starting development server at http://127.0.0.1:8000/
+> Quit the server with CONTROL-C.
+
+##FAQ
+- django.db.utils.OperationalError: (2002, "Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)")
+
+    Start your mysql service by typing ```sudo service mysql start``` in your terminal.
+
+- django.db.utils.OperationalError: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+
+    Modify database setting in src/SysuLesson/settings.py, especially the user and password.
+
+- Unable to access from other devices.
+
+    Check whether you have added ```0.0.0.0:[PORT]``` in your command or not.
